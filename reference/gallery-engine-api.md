@@ -259,7 +259,12 @@ interface ThemeConfig {
 ### 创建实例
 
 ```ts
-const gallery = new Gallery(config)
+import { Gallery } from '@gallery-engine/core'
+
+const gallery = new Gallery({
+  container: '#gallery',
+  images
+})
 ```
 
 ---
@@ -270,6 +275,13 @@ const gallery = new Gallery(config)
 
 ```ts
 gallery.init()
+```
+
+初始化配置、解析容器并派发：
+
+```text
+init
+mounted
 ```
 
 ### destroy
@@ -288,6 +300,13 @@ gallery.refresh()
 
 重新计算 Layout、Render 与 Virtual Range。
 
+当前核心阶段派发：
+
+```text
+layout:update
+updated
+```
+
 ### update
 
 ```ts
@@ -295,6 +314,16 @@ gallery.update(partialConfig)
 ```
 
 动态更新配置。
+
+返回合并后的 `GalleryConfig`，并派发 `updated`。
+
+### use
+
+```ts
+gallery.use(plugin)
+```
+
+安装插件并派发 `plugin:install`。
 
 ---
 

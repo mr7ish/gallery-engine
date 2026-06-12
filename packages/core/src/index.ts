@@ -21,6 +21,9 @@ export type {
 } from "./config-manager";
 export { ConfigManager, DEFAULT_GALLERY_CONFIG, mergeConfig } from "./config-manager";
 
+export type { GalleryEvents, GalleryState, Plugin } from "./gallery";
+export { Gallery } from "./gallery";
+
 export type {
   EventHandler,
   EventName,

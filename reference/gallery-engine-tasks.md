@@ -84,11 +84,11 @@ packages/core/src/config-manager.ts
 
 ### Feature 2.3 Gallery 主类
 
-- [ ] init
-- [ ] destroy
-- [ ] refresh
-- [ ] update
-- [ ] use(plugin)
+- [x] init
+- [x] destroy
+- [x] refresh
+- [x] update
+- [x] use(plugin)
 
 文件：
 
