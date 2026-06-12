@@ -55,9 +55,9 @@ pnpm install 后可直接开发
 
 ### Feature 2.1 EventBus
 
-- [ ] 实现 on/off/emit/once
-- [ ] 添加类型安全事件映射
-- [ ] 编写单元测试
+- [x] 实现 on/off/emit/once
+- [x] 添加类型安全事件映射
+- [x] 编写单元测试
 
 文件：
 
@@ -437,7 +437,7 @@ packages/plugins/src/ai-search-plugin.ts
 
 ### Feature 11.1 Unit Tests
 
-- [ ] EventBus
+- [x] EventBus
 - [ ] Layouts
 - [ ] VirtualEngine
 - [ ] CacheManager

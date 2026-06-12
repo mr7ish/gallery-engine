@@ -24,5 +24,6 @@
     "vitest.config.ts",
     "packages/**/*.ts",
     "tests/**/*.ts"
-  ]
+  ],
+  "exclude": ["packages/**/dist/**", "node_modules/**", "coverage/**", "playwright-report/**"]
 }

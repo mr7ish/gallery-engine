@@ -462,6 +462,46 @@ interface LayoutResult {
 
 ## Event API
 
+### EventBus
+
+```ts
+import { EventBus } from '@gallery-engine/core'
+
+interface GalleryEvents {
+  'image:loaded': {
+    id: string
+    src: string
+  }
+  'preview:close': undefined
+}
+
+const eventBus = new EventBus<GalleryEvents>()
+```
+
+### 注册事件
+
+```ts
+const unsubscribe = eventBus.on('image:loaded', payload => {
+  payload.id
+})
+```
+
+### 单次事件
+
+```ts
+eventBus.once('preview:close', () => {})
+```
+
+### 派发事件
+
+```ts
+eventBus.emit('image:loaded', {
+  id: 'hero',
+  src: '/hero.jpg'
+})
+eventBus.emit('preview:close')
+```
+
 ### 监听事件
 
 ```ts
