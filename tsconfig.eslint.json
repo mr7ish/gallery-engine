@@ -1,0 +1,28 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "allowJs": true,
+    "baseUrl": ".",
+    "checkJs": false,
+    "composite": false,
+    "declaration": false,
+    "declarationMap": false,
+    "noEmit": true,
+    "paths": {
+      "@gallery-engine/animations": ["packages/animations/src/index.ts"],
+      "@gallery-engine/core": ["packages/core/src/index.ts"],
+      "@gallery-engine/layouts": ["packages/layouts/src/index.ts"],
+      "@gallery-engine/plugins": ["packages/plugins/src/index.ts"],
+      "@gallery-engine/preview": ["packages/preview/src/index.ts"],
+      "@gallery-engine/shared": ["packages/shared/src/index.ts"]
+    }
+  },
+  "include": [
+    "eslint.config.js",
+    "playwright.config.ts",
+    "prettier.config.cjs",
+    "vitest.config.ts",
+    "packages/**/*.ts",
+    "tests/**/*.ts"
+  ]
+}

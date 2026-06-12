@@ -1,0 +1,46 @@
+{
+  "name": "gallery-engine",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@9.15.4",
+  "scripts": {
+    "build": "pnpm -r --filter @gallery-engine/* build",
+    "typecheck": "pnpm -r --filter @gallery-engine/* typecheck",
+    "test": "vitest run",
+    "test:e2e": "playwright test",
+    "lint": "eslint .",
+    "format": "prettier --check .",
+    "format:write": "prettier --write .",
+    "prepare": "husky || true"
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js,mjs,cjs,json,md,yml,yaml}": [
+      "prettier --check"
+    ],
+    "*.{ts,tsx,js,mjs,cjs}": [
+      "eslint"
+    ]
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.17.0",
+    "@gallery-engine/animations": "workspace:*",
+    "@gallery-engine/core": "workspace:*",
+    "@gallery-engine/layouts": "workspace:*",
+    "@gallery-engine/plugins": "workspace:*",
+    "@gallery-engine/preview": "workspace:*",
+    "@gallery-engine/shared": "workspace:*",
+    "@playwright/test": "^1.49.1",
+    "@types/node": "^22.10.5",
+    "eslint": "^9.17.0",
+    "eslint-plugin-import": "^2.31.0",
+    "globals": "^15.14.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.3.0",
+    "prettier": "^3.4.2",
+    "typescript": "^5.7.2",
+    "typescript-eslint": "^8.19.1",
+    "vite": "^6.0.7",
+    "vitest": "^2.1.8"
+  }
+}
