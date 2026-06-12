@@ -1,4 +1,27 @@
 export type {
+  AnimationConfig,
+  AnimationPreset,
+  CacheConfig,
+  DeepPartial,
+  GalleryConfig,
+  GalleryConfigUpdate,
+  GalleryImage,
+  GridLayoutConfig,
+  JustifiedLayoutConfig,
+  LayoutConfig,
+  LayoutType,
+  LazyLoadConfig,
+  MasonryLayoutConfig,
+  PreloadConfig,
+  PreviewConfig,
+  ThemeConfig,
+  TimelineLayoutConfig,
+  UserGalleryConfig,
+  VirtualScrollConfig
+} from "./config-manager";
+export { ConfigManager, DEFAULT_GALLERY_CONFIG, mergeConfig } from "./config-manager";
+
+export type {
   EventHandler,
   EventName,
   EventPayload,

@@ -69,10 +69,10 @@ packages/core/src/event-bus.ts
 
 ### Feature 2.2 ConfigManager
 
-- [ ] 默认配置
-- [ ] 深度合并逻辑
-- [ ] 运行时更新
-- [ ] 类型定义
+- [x] 默认配置
+- [x] 深度合并逻辑
+- [x] 运行时更新
+- [x] 类型定义
 
 文件：
 

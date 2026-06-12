@@ -31,19 +31,40 @@ gallery.on('preview:open')
 ## GalleryConfig
 
 ```ts
-interface GalleryConfig {
+import { ConfigManager, DEFAULT_GALLERY_CONFIG, mergeConfig } from '@gallery-engine/core'
+
+interface UserGalleryConfig {
   container: string | HTMLElement
   images: GalleryImage[]
-  layout?: LayoutType
-  virtual?: boolean
-  preview?: boolean
-  animation?: AnimationConfig
-  lazyLoad?: LazyLoadConfig
-  preload?: PreloadConfig
-  cache?: CacheConfig
-  theme?: ThemeConfig
+  layout?: Partial<LayoutConfig>
+  virtual?: Partial<VirtualScrollConfig>
+  preview?: Partial<PreviewConfig>
+  animation?: Partial<AnimationConfig>
+  lazyLoad?: Partial<LazyLoadConfig>
+  preload?: Partial<PreloadConfig>
+  cache?: Partial<CacheConfig>
+  theme?: Partial<ThemeConfig>
 }
+
+const configManager = new ConfigManager({
+  container: '#gallery',
+  images: []
+})
+
+const config = configManager.getConfig()
+const updatedConfig = configManager.update({
+  lazyLoad: {
+    rootMargin: '300px'
+  }
+})
 ```
+
+说明：
+
+- `container` 与 `images` 是用户配置必填项
+- 其他配置与 `DEFAULT_GALLERY_CONFIG` 深度合并
+- 数组配置采用替换语义，不按索引合并
+- `mergeConfig(baseConfig, overrideConfig)` 可用于独立合并普通配置对象
 
 ---
 
