@@ -423,6 +423,38 @@ gallery.registerLayout(layout)
 
 ---
 
+## 渲染系统
+
+### Renderer
+
+```ts
+import { Renderer } from '@gallery-engine/core'
+
+const renderer = new Renderer({
+  container: document.querySelector('#gallery')!
+})
+
+renderer.render([
+  {
+    id: 'hero',
+    image,
+    x: 0,
+    y: 0,
+    width: 240,
+    height: 180
+  }
+])
+```
+
+说明：
+
+- `Renderer` 只负责 DOM 创建、更新、销毁与节点复用
+- `RenderItem` 是布局计算后的渲染输入
+- `render([])` 或 `clear()` 会回收当前节点进入复用池
+- `destroy()` 会清空容器、已渲染节点与复用池
+
+---
+
 ## 搜索方法
 
 ### search

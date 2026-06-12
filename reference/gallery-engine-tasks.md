@@ -193,10 +193,10 @@ packages/layouts/src/justified-layout.ts
 
 ### Feature 5.1 Renderer
 
-- [ ] 创建 DOM 节点
-- [ ] 更新节点
-- [ ] 销毁节点
-- [ ] 节点复用池
+- [x] 创建 DOM 节点
+- [x] 更新节点
+- [x] 销毁节点
+- [x] 节点复用池
 
 文件：
 
