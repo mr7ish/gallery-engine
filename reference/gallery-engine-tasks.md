@@ -135,9 +135,9 @@ packages/shared/src/cache-manager.ts
 
 ### Feature 4.1 Layout 接口
 
-- [ ] Layout 类型定义
-- [ ] LayoutResult 定义
-- [ ] registerLayout API
+- [x] Layout 类型定义
+- [x] LayoutResult 定义
+- [x] registerLayout API
 
 文件：
 
@@ -149,9 +149,9 @@ packages/layouts/src/types.ts
 
 ### Feature 4.2 GridLayout
 
-- [ ] 固定列布局
-- [ ] gap 支持
-- [ ] 响应式列数
+- [x] 固定列布局
+- [x] gap 支持
+- [x] 响应式列数
 
 文件：
 
@@ -438,7 +438,7 @@ packages/plugins/src/ai-search-plugin.ts
 ### Feature 11.1 Unit Tests
 
 - [x] EventBus
-- [ ] Layouts
+- [x] Layouts
 - [ ] VirtualEngine
 - [ ] CacheManager
 

@@ -524,9 +524,11 @@ gallery.unuse(pluginName)
 ### Layout
 
 ```ts
-interface Layout {
-  name:string
-  calculate(items:GalleryImage[]):LayoutResult
+import { GridLayout, LayoutRegistry } from '@gallery-engine/layouts'
+
+interface Layout<TItem extends LayoutInputItem = LayoutInputItem> {
+  name: string
+  calculate(items: readonly TItem[], context: LayoutCalculationContext): LayoutResult
 }
 ```
 
@@ -534,11 +536,40 @@ interface Layout {
 
 ```ts
 interface LayoutResult {
-  width:number
-  height:number
-  items:LayoutItem[]
+  width: number
+  height: number
+  items: readonly LayoutItem[]
 }
 ```
+
+### LayoutRegistry
+
+```ts
+const registry = new LayoutRegistry()
+registry.registerLayout(new GridLayout())
+
+const layout = registry.getLayout('grid')
+```
+
+### GridLayout
+
+```ts
+const grid = new GridLayout({
+  columns: 4,
+  gap: 12
+})
+
+const result = grid.calculate(images, {
+  containerWidth: 960
+})
+```
+
+说明：
+
+- `columns` 指定固定列数
+- `gap` 指定行列间距
+- 未设置 `columns` 且设置 `minColumnWidth` 时，会根据容器宽度计算响应式列数
+- 图片存在 `width` 与 `height` 时按比例计算高度，否则使用方形占位
 
 ---
 
