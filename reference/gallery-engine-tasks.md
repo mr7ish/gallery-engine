@@ -208,9 +208,9 @@ packages/core/src/renderer.ts
 
 ### Feature 5.2 Lazy Load
 
-- [ ] IntersectionObserver 封装
-- [ ] rootMargin 支持
-- [ ] threshold 支持
+- [x] IntersectionObserver 封装
+- [x] rootMargin 支持
+- [x] threshold 支持
 
 文件：
 

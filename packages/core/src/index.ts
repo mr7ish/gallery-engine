@@ -24,6 +24,9 @@ export { ConfigManager, DEFAULT_GALLERY_CONFIG, mergeConfig } from "./config-man
 export type { GalleryEvents, GalleryState, Plugin } from "./gallery";
 export { Gallery } from "./gallery";
 
+export type { LazyObserverEntry, LazyObserverHandler, LazyObserverOptions } from "./lazy-observer";
+export { LazyObserver } from "./lazy-observer";
+
 export type { RenderedNode, RendererOptions, RenderItem } from "./renderer";
 export { Renderer } from "./renderer";
 

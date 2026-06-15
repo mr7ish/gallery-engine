@@ -453,6 +453,32 @@ renderer.render([
 - `render([])` 或 `clear()` 会回收当前节点进入复用池
 - `destroy()` 会清空容器、已渲染节点与复用池
 
+### LazyObserver
+
+```ts
+import { LazyObserver } from '@gallery-engine/core'
+
+const lazyObserver = new LazyObserver({
+  rootMargin: '200px',
+  threshold: 0,
+  onLoad: ({ element, data }) => {
+    element.setAttribute('src', data.src)
+  }
+})
+
+lazyObserver.observe(imageElement, {
+  id: image.id,
+  src: image.src
+})
+```
+
+说明：
+
+- `LazyObserver` 封装 `IntersectionObserver`
+- `root`、`rootMargin`、`threshold` 透传给原生观察器
+- 默认 `once: true`，元素首次进入视口后自动取消观察
+- `disconnect()` 会清空所有观察目标
+
 ---
 
 ## 搜索方法
