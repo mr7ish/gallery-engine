@@ -346,10 +346,10 @@ packages/animations/src/presets/*
 
 ### Feature 8.3 FLIP 动画
 
-- [ ] 缩略图状态获取
-- [ ] 预览状态获取
-- [ ] GSAP Flip 集成
-- [ ] 反向关闭动画
+- [x] 缩略图状态获取
+- [x] 预览状态获取
+- [x] GSAP Flip 集成
+- [x] 反向关闭动画
 
 文件：
 
@@ -445,6 +445,7 @@ packages/plugins/src/ai-search-plugin.ts
 - [x] FullscreenManager
 - [x] AnimationEngine
 - [x] AnimationPresets
+- [x] FlipAnimation
 - [ ] CacheManager
 
 目录：

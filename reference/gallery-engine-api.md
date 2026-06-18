@@ -356,6 +356,60 @@ registerBuiltInAnimationPresets(animationEngine, {
 - `scale`、`zoom` 与 `bounce` 支持调整初始 scale
 - `registerBuiltInAnimationPresets()` 可一次性注册全部内置预设
 
+### FlipAnimation
+
+```ts
+import { FlipAnimation } from '@gallery-engine/animations'
+import type { GsapFlipAdapter } from '@gallery-engine/animations'
+
+const flipAdapter: GsapFlipAdapter = {
+  getState: target => Flip.getState(target),
+  from: (state, vars) => Flip.from(state, vars)
+}
+
+const flipAnimation = new FlipAnimation({
+  adapter: flipAdapter,
+  vars: {
+    duration: 0.35,
+    ease: 'power2.inOut'
+  }
+})
+
+flipAnimation.open(
+  {
+    thumbnail: thumbnailElement,
+    preview: previewElement
+  },
+  {
+    applyTargetState: () => {
+      previewElement.hidden = false
+    }
+  }
+)
+
+flipAnimation.close(
+  {
+    thumbnail: thumbnailElement,
+    preview: previewElement
+  },
+  {
+    applyTargetState: () => {
+      previewElement.hidden = true
+    }
+  }
+)
+```
+
+说明：
+
+- `FlipAnimation` 通过 `GsapFlipAdapter` 封装 GSAP Flip 的 `getState()` 与 `from()`
+- `captureThumbnailState()` 获取缩略图状态
+- `capturePreviewState()` 获取预览图状态
+- `open()` 从缩略图状态过渡到预览状态
+- `close()` 从预览状态反向过渡到缩略图状态
+- `applyTargetState` 在捕获起点后执行，用于切换 DOM 到目标状态
+- `cancel()` 会调用当前 playback 的 `kill()`
+
 ---
 
 ## ThemeConfig

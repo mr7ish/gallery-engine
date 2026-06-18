@@ -16,6 +16,21 @@ export type {
 export { AnimationEngine } from "./animation-engine";
 
 export type {
+  FlipAnimationOptions,
+  FlipAnimationPair,
+  FlipDirection,
+  FlipElementRole,
+  FlipElementSnapshot,
+  FlipPairSnapshot,
+  FlipPlayOptions,
+  FlipTransitionEvent,
+  FlipTransitionHandler,
+  GsapFlipAdapter,
+  GsapFlipState
+} from "./flip-animation";
+export { FlipAnimation } from "./flip-animation";
+
+export type {
   AnimationPresetFactory,
   AnimationPresetOptions,
   BouncePresetOptions,
