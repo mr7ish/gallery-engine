@@ -1,3 +1,10 @@
+export type {
+  FullscreenManagerOptions,
+  FullscreenState,
+  FullscreenStateHandler
+} from "./fullscreen-manager";
+export { FullscreenManager } from "./fullscreen-manager";
+
 export type { PreviewEngineOptions, PreviewItem, PreviewState } from "./preview-engine";
 export { PreviewEngine } from "./preview-engine";
 

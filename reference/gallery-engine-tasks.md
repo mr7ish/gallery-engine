@@ -300,9 +300,9 @@ packages/preview/src/zoom-manager.ts
 
 ### Feature 7.3 Fullscreen
 
-- [ ] 浏览器全屏 API
-- [ ] F11 快捷键
-- [ ] 状态同步
+- [x] 浏览器全屏 API
+- [x] F11 快捷键
+- [x] 状态同步
 
 文件：
 
@@ -442,6 +442,7 @@ packages/plugins/src/ai-search-plugin.ts
 - [x] VirtualEngine
 - [x] ScrollManager
 - [x] ZoomManager
+- [x] FullscreenManager
 - [ ] CacheManager
 
 目录：

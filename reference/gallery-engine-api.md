@@ -492,6 +492,34 @@ zoomManager.attach()
 - 双指 Pinch 根据两指距离变化计算缩放
 - `detach()` 会解除 DOM 监听，`destroy()` 会解除监听并重置状态
 
+### FullscreenManager
+
+```ts
+import { FullscreenManager } from '@gallery-engine/preview'
+
+const fullscreenManager = new FullscreenManager({
+  target: document.querySelector('.preview-shell')!,
+  keyboard: true,
+  onChange: state => {
+    state.active
+    state.element
+  }
+})
+
+fullscreenManager.attach()
+await fullscreenManager.enter()
+await fullscreenManager.exit()
+```
+
+说明：
+
+- `FullscreenManager` 封装浏览器 Fullscreen API
+- `enter()`、`exit()` 与 `toggle()` 返回当前全屏状态
+- `keyboard: true` 时监听 `F11` 并切换全屏
+- `fullscreenchange` 会同步 `active`、`element`、`target` 与 `available`
+- `sync()` 可手动读取文档全屏状态并通知 `onChange`
+- `detach()` 会解除 DOM 监听，`destroy()` 会解除监听并清空目标引用
+
 ---
 
 ## 布局方法
