@@ -849,6 +849,41 @@ interface Plugin {
 gallery.use(new WatermarkPlugin())
 ```
 
+### WatermarkPlugin
+
+```ts
+import { WatermarkPlugin } from '@gallery-engine/plugins'
+
+gallery.use(
+  new WatermarkPlugin({
+    text: 'Private',
+    position: 'bottom-right',
+    offset: {
+      x: 16,
+      y: 16
+    },
+    opacity: 0.72
+  })
+)
+
+gallery.use(
+  new WatermarkPlugin({
+    image: {
+      src: '/brand-watermark.png',
+      alt: 'Brand',
+      width: 120
+    },
+    position: 'center'
+  })
+)
+```
+
+说明：
+- `WatermarkPlugin` 渲染非交互式 DOM 水印，不拦截鼠标事件
+- 支持文字水印、图片水印、透明度、层级、className、偏移量配置
+- `position` 支持九宫格位置：`top-left`、`top-center`、`top-right`、`center-left`、`center`、`center-right`、`bottom-left`、`bottom-center`、`bottom-right`
+- 插件卸载或 `destroy` 生命周期会移除水印 DOM，并恢复由插件修改的容器定位样式
+
 ### 卸载插件
 
 ```ts

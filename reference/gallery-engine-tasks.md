@@ -377,9 +377,9 @@ packages/core/src/plugin-manager.ts
 
 ### Feature 9.2 WatermarkPlugin
 
-- [ ] 文字水印
-- [ ] 图片水印
-- [ ] 位置配置
+- [x] 文字水印
+- [x] 图片水印
+- [x] 位置配置
 
 文件：
 
