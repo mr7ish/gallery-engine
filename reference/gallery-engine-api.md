@@ -156,6 +156,45 @@ overscan = 10
 实际渲染40张
 ```
 
+### VirtualEngine
+
+```ts
+import { VirtualEngine } from '@gallery-engine/core'
+import type { VirtualItem, VirtualViewport } from '@gallery-engine/core'
+
+const virtualEngine = new VirtualEngine({
+  overscan: 200
+})
+
+const items: readonly VirtualItem[] = [
+  {
+    id: 'hero',
+    x: 0,
+    y: 0,
+    width: 240,
+    height: 180
+  }
+]
+
+virtualEngine.setItems(items)
+
+const viewport: VirtualViewport = {
+  scrollTop: 0,
+  height: 600
+}
+
+const result = virtualEngine.calculate(viewport)
+```
+
+说明：
+
+- `VirtualEngine` 基于已完成布局的 `x`、`y`、`width`、`height` 计算可见范围
+- `overscan` 使用像素值向视口上下扩展，避免滚动时频繁抖动
+- `calculate()` 返回 `range`、`visibleItems`、`retainedIds` 与 `recycledIds`
+- `retainedIds` 表示本次需要保留或复用的节点 ID
+- `recycledIds` 表示上一次保留但本次不可见的节点 ID，可交给 Renderer 回收
+- `reset()` 只清空保留状态，不移除已设置的布局数据
+
 ---
 
 ## LazyLoadConfig

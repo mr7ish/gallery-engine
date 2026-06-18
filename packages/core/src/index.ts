@@ -34,6 +34,15 @@ export type { RenderedNode, RendererOptions, RenderItem } from "./renderer";
 export { Renderer } from "./renderer";
 
 export type {
+  VirtualEngineOptions,
+  VirtualItem,
+  VirtualRange,
+  VirtualResult,
+  VirtualViewport
+} from "./virtual-engine";
+export { VirtualEngine } from "./virtual-engine";
+
+export type {
   EventHandler,
   EventName,
   EventPayload,

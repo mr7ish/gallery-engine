@@ -238,10 +238,10 @@ packages/core/src/infinite-scroll.ts
 
 ### Feature 6.1 VirtualEngine
 
-- [ ] 可见区域计算
-- [ ] overscan 支持
-- [ ] DOM 回收
-- [ ] 节点复用
+- [x] 可见区域计算
+- [x] overscan 支持
+- [x] DOM 回收
+- [x] 节点复用
 
 文件：
 
@@ -439,7 +439,7 @@ packages/plugins/src/ai-search-plugin.ts
 
 - [x] EventBus
 - [x] Layouts
-- [ ] VirtualEngine
+- [x] VirtualEngine
 - [ ] CacheManager
 
 目录：
