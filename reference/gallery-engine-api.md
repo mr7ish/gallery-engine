@@ -323,6 +323,39 @@ animationEngine.play('fade-in', {
 - Hook 可在 engine、definition 与 play options 三层配置，并按顺序组合执行
 - `cancel()` 会调用底层 playback 的 `kill()`，`clear()` 会取消活跃动画并清空注册表
 
+### 内置动画预设
+
+```ts
+import {
+  createFadePreset,
+  createSlidePreset,
+  createScalePreset,
+  createZoomPreset,
+  createBouncePreset,
+  registerBuiltInAnimationPresets
+} from '@gallery-engine/animations'
+
+animationEngine.register(createFadePreset())
+animationEngine.register(createSlidePreset({ axis: 'x', distance: 40 }))
+animationEngine.register(createScalePreset())
+animationEngine.register(createZoomPreset({ transformOrigin: 'top left' }))
+animationEngine.register(createBouncePreset())
+
+registerBuiltInAnimationPresets(animationEngine, {
+  fade: {
+    duration: 0.16
+  }
+})
+```
+
+说明：
+
+- 内置预设包含 `fade`、`slide`、`scale`、`zoom` 与 `bounce`
+- 每个预设返回一个 `AnimationDefinition`，可直接传入 `AnimationEngine.register()`
+- `slide` 支持 `axis` 与 `distance`
+- `scale`、`zoom` 与 `bounce` 支持调整初始 scale
+- `registerBuiltInAnimationPresets()` 可一次性注册全部内置预设
+
 ---
 
 ## ThemeConfig

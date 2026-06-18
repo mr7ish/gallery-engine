@@ -15,6 +15,26 @@ export type {
 } from "./animation-engine";
 export { AnimationEngine } from "./animation-engine";
 
+export type {
+  AnimationPresetFactory,
+  AnimationPresetOptions,
+  BouncePresetOptions,
+  BuiltInAnimationPresetName,
+  ScalePresetOptions,
+  SlidePresetOptions,
+  ZoomPresetOptions
+} from "./presets";
+export {
+  BUILT_IN_ANIMATION_PRESET_NAMES,
+  createBouncePreset,
+  createBuiltInAnimationPresets,
+  createFadePreset,
+  createScalePreset,
+  createSlidePreset,
+  createZoomPreset,
+  registerBuiltInAnimationPresets
+} from "./presets";
+
 export interface PackageMetadata {
   readonly name: string;
   readonly layer: "core" | "engine" | "plugin" | "shared";

@@ -330,11 +330,11 @@ packages/animations/src/animation-engine.ts
 
 ### Feature 8.2 内置动画
 
-- [ ] Fade
-- [ ] Slide
-- [ ] Scale
-- [ ] Zoom
-- [ ] Bounce
+- [x] Fade
+- [x] Slide
+- [x] Scale
+- [x] Zoom
+- [x] Bounce
 
 文件：
 
@@ -444,6 +444,7 @@ packages/plugins/src/ai-search-plugin.ts
 - [x] ZoomManager
 - [x] FullscreenManager
 - [x] AnimationEngine
+- [x] AnimationPresets
 - [ ] CacheManager
 
 目录：
