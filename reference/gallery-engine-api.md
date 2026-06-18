@@ -280,6 +280,49 @@ type AnimationPreset =
   | 'bounce'
 ```
 
+### AnimationEngine
+
+```ts
+import { AnimationEngine } from '@gallery-engine/animations'
+import type { GsapAnimationAdapter } from '@gallery-engine/animations'
+
+const adapter: GsapAnimationAdapter = {
+  to: (target, vars) => gsap.to(target, vars),
+  from: (target, vars) => gsap.from(target, vars),
+  fromTo: (target, fromVars, toVars) => gsap.fromTo(target, fromVars, toVars)
+}
+
+const animationEngine = new AnimationEngine({
+  adapter,
+  hooks: {
+    complete: event => {
+      event.name
+    }
+  }
+})
+
+animationEngine.register({
+  name: 'fade-in',
+  vars: {
+    opacity: 1,
+    duration: 0.2
+  }
+})
+
+animationEngine.play('fade-in', {
+  target: document.querySelector('.gallery-engine__item')!
+})
+```
+
+说明：
+
+- `AnimationEngine` 通过 `GsapAnimationAdapter` 封装 GSAP-compatible 的 `to`、`from` 与 `fromTo`
+- `register()` 注册命名动画，`unregister()` 移除动画
+- `play()` 播放命名动画并返回底层 playback
+- 生命周期 Hook 支持 `before-start`、`start`、`complete` 与 `cancel`
+- Hook 可在 engine、definition 与 play options 三层配置，并按顺序组合执行
+- `cancel()` 会调用底层 playback 的 `kill()`，`clear()` 会取消活跃动画并清空注册表
+
 ---
 
 ## ThemeConfig

@@ -316,9 +316,9 @@ packages/preview/src/fullscreen-manager.ts
 
 ### Feature 8.1 AnimationEngine
 
-- [ ] GSAP 封装
-- [ ] 动画注册机制
-- [ ] 生命周期 Hook
+- [x] GSAP 封装
+- [x] 动画注册机制
+- [x] 生命周期 Hook
 
 文件：
 
@@ -443,6 +443,7 @@ packages/plugins/src/ai-search-plugin.ts
 - [x] ScrollManager
 - [x] ZoomManager
 - [x] FullscreenManager
+- [x] AnimationEngine
 - [ ] CacheManager
 
 目录：
