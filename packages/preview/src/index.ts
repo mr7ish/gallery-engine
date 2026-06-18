@@ -1,6 +1,9 @@
 export type { PreviewEngineOptions, PreviewItem, PreviewState } from "./preview-engine";
 export { PreviewEngine } from "./preview-engine";
 
+export type { ZoomManagerOptions, ZoomPoint, ZoomState, ZoomStateHandler } from "./zoom-manager";
+export { ZoomManager } from "./zoom-manager";
+
 export interface PackageMetadata {
   readonly name: string;
   readonly layer: "core" | "engine" | "plugin" | "shared";

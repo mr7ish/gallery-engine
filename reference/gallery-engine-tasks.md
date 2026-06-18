@@ -285,10 +285,10 @@ packages/preview/src/preview-engine.ts
 
 ### Feature 7.2 Zoom & Drag
 
-- [ ] 滚轮缩放
-- [ ] 双击缩放
-- [ ] 拖拽平移
-- [ ] Pinch 手势
+- [x] 滚轮缩放
+- [x] 双击缩放
+- [x] 拖拽平移
+- [x] Pinch 手势
 
 文件：
 
@@ -441,6 +441,7 @@ packages/plugins/src/ai-search-plugin.ts
 - [x] Layouts
 - [x] VirtualEngine
 - [x] ScrollManager
+- [x] ZoomManager
 - [ ] CacheManager
 
 目录：

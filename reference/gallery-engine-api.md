@@ -462,6 +462,36 @@ preview.resetZoom()
 - 键盘开启时支持 `ArrowLeft`、`ArrowRight`、`Space`、`Home`、`End`、`Escape`
 - `destroy()` 会解除键盘监听
 
+### ZoomManager
+
+```ts
+import { ZoomManager } from '@gallery-engine/preview'
+
+const zoomManager = new ZoomManager({
+  target: document.querySelector('.preview-image')!,
+  minZoom: 1,
+  maxZoom: 4,
+  zoomStep: 0.25,
+  doubleClickZoom: 2,
+  onChange: state => {
+    state.zoom
+    state.panX
+    state.panY
+  }
+})
+
+zoomManager.attach()
+```
+
+说明：
+
+- `ZoomManager` 管理预览图的 `zoom`、`panX`、`panY`、拖拽与 Pinch 状态
+- 滚轮向上放大，滚轮向下缩小，并自动限制在 `minZoom` 与 `maxZoom` 之间
+- 双击在 `doubleClickZoom` 与 `minZoom` 之间切换，回到最小缩放时会重置平移
+- 指针拖拽在放大后更新平移位置
+- 双指 Pinch 根据两指距离变化计算缩放
+- `detach()` 会解除 DOM 监听，`destroy()` 会解除监听并重置状态
+
 ---
 
 ## 布局方法
