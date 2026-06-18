@@ -30,6 +30,16 @@ export { InfiniteScroll } from "./infinite-scroll";
 export type { LazyObserverEntry, LazyObserverHandler, LazyObserverOptions } from "./lazy-observer";
 export { LazyObserver } from "./lazy-observer";
 
+export type {
+  ManagedPlugin,
+  PluginLifecycleEvent,
+  PluginLifecycleHandler,
+  PluginLifecyclePhase,
+  PluginManagerOptions,
+  PluginSnapshot
+} from "./plugin-manager";
+export { PluginManager } from "./plugin-manager";
+
 export type { RenderedNode, RendererOptions, RenderItem } from "./renderer";
 export { Renderer } from "./renderer";
 

@@ -2,6 +2,8 @@ import type { GalleryConfig, GalleryConfigUpdate, UserGalleryConfig } from "./co
 import { ConfigManager } from "./config-manager";
 import type { EventHandler, EventName, EventPayload, Unsubscribe } from "./event-bus";
 import { EventBus } from "./event-bus";
+import type { ManagedPlugin } from "./plugin-manager";
+import { PluginManager } from "./plugin-manager";
 
 export interface GalleryEvents {
   readonly init: {
@@ -26,7 +28,7 @@ export interface GalleryEvents {
   };
 }
 
-export interface Plugin {
+export interface Plugin extends ManagedPlugin<Gallery> {
   readonly name: string;
   install(gallery: Gallery): void;
   destroy?(): void;
@@ -40,12 +42,25 @@ export type GalleryState = "idle" | "initialized" | "destroyed";
 export class Gallery {
   private readonly configManager: ConfigManager;
   private readonly eventBus = new EventBus<GalleryEvents>();
-  private readonly plugins = new Map<string, Plugin>();
+  private readonly pluginManager: PluginManager<Gallery>;
   private containerElement: HTMLElement | null = null;
   private state: GalleryState = "idle";
 
   public constructor(userConfig: UserGalleryConfig) {
     this.configManager = new ConfigManager(userConfig);
+    this.pluginManager = new PluginManager<Gallery>({
+      context: this,
+      onInstall: ({ name }) => {
+        this.eventBus.emit("plugin:install", {
+          name
+        });
+      },
+      onUninstall: ({ name }) => {
+        this.eventBus.emit("plugin:destroy", {
+          name
+        });
+      }
+    });
   }
 
   /**
@@ -76,14 +91,7 @@ export class Gallery {
       return;
     }
 
-    for (const plugin of [...this.plugins.values()].reverse()) {
-      plugin.destroy?.();
-      this.eventBus.emit("plugin:destroy", {
-        name: plugin.name
-      });
-    }
-
-    this.plugins.clear();
+    this.pluginManager.clear();
     this.containerElement = null;
     this.state = "destroyed";
     this.eventBus.emit("destroy");
@@ -119,17 +127,29 @@ export class Gallery {
   public use(plugin: Plugin): this {
     this.assertActive();
 
-    if (this.plugins.has(plugin.name)) {
-      throw new Error(`Plugin "${plugin.name}" is already installed.`);
-    }
-
-    plugin.install(this);
-    this.plugins.set(plugin.name, plugin);
-    this.eventBus.emit("plugin:install", {
-      name: plugin.name
-    });
+    this.pluginManager.install(plugin);
 
     return this;
+  }
+
+  /**
+   * Uninstall a plugin by name.
+   */
+  public unuse(name: string): boolean {
+    this.assertActive();
+
+    return this.pluginManager.uninstall(name);
+  }
+
+  /**
+   * Dispatch a plugin lifecycle phase.
+   */
+  public dispatchPluginLifecycle(
+    phase: "init" | "load" | "render" | "preview" | "destroy",
+    payload?: unknown
+  ): void {
+    this.assertActive();
+    this.pluginManager.dispatch(phase, payload);
   }
 
   /**

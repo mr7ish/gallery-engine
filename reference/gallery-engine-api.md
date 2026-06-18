@@ -832,9 +832,14 @@ gallery.getCacheSize()
 
 ```ts
 interface Plugin {
-  name:string
-  install(gallery: Gallery):void
-  destroy?():void
+  name: string
+  install(gallery: Gallery): void
+  destroy?(gallery: Gallery): void
+  onInit?(gallery: Gallery, payload: unknown): void
+  onLoad?(gallery: Gallery, payload: unknown): void
+  onRender?(gallery: Gallery, payload: unknown): void
+  onPreview?(gallery: Gallery, payload: unknown): void
+  onDestroy?(gallery: Gallery, payload: unknown): void
 }
 ```
 
@@ -849,6 +854,43 @@ gallery.use(new WatermarkPlugin())
 ```ts
 gallery.unuse(pluginName)
 ```
+
+### 生命周期调度
+
+```ts
+gallery.dispatchPluginLifecycle('init')
+gallery.dispatchPluginLifecycle('render', {
+  visibleCount: 20
+})
+```
+
+### PluginManager
+
+```ts
+import { PluginManager } from '@gallery-engine/core'
+
+const pluginManager = new PluginManager({
+  context: gallery,
+  onInstall: event => {
+    event.name
+  },
+  onLifecycle: event => {
+    event.phase
+  }
+})
+
+pluginManager.install(plugin)
+pluginManager.dispatch('render')
+pluginManager.uninstall(plugin.name)
+```
+
+说明：
+
+- `PluginManager` 管理插件注册、生命周期调度与卸载
+- 插件名称必须唯一
+- `dispatch()` 支持 `init`、`load`、`render`、`preview`、`destroy`
+- `clear()` 会按注册顺序反向卸载插件
+- `Gallery.use()` 与 `Gallery.unuse()` 基于 `PluginManager` 实现
 
 ---
 

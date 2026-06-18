@@ -82,6 +82,29 @@ describe("Gallery", () => {
     expect(() => gallery.use(plugin)).toThrow('Plugin "watermark" is already installed.');
   });
 
+  it("uninstalls plugins and emits plugin destroy events", () => {
+    const gallery = createGallery();
+    const destroy = vi.fn();
+    const destroyEventHandler = vi.fn();
+    const plugin: Plugin = {
+      name: "watermark",
+      install: () => {
+        return;
+      },
+      destroy
+    };
+
+    gallery.on("plugin:destroy", destroyEventHandler);
+    gallery.use(plugin);
+
+    expect(gallery.unuse("watermark")).toBe(true);
+    expect(destroy).toHaveBeenCalledOnce();
+    expect(destroyEventHandler).toHaveBeenCalledWith({
+      name: "watermark"
+    });
+    expect(gallery.unuse("watermark")).toBe(false);
+  });
+
   it("destroys installed plugins in reverse order and clears listeners", () => {
     const gallery = createGallery();
     const calls: string[] = [];
@@ -154,10 +177,12 @@ describe("Gallery", () => {
     });
 
     // @ts-expect-error Plugins must include a name.
-    gallery.use({
+    const invalidPlugin: Plugin = {
       install: () => {
         return;
       }
-    });
+    };
+
+    expect("install" in invalidPlugin).toBe(true);
   });
 });

@@ -363,9 +363,9 @@ packages/animations/src/flip-animation.ts
 
 ### Feature 9.1 PluginManager
 
-- [ ] 插件注册
-- [ ] 生命周期调度
-- [ ] 插件卸载
+- [x] 插件注册
+- [x] 生命周期调度
+- [x] 插件卸载
 
 文件：
 
@@ -446,6 +446,7 @@ packages/plugins/src/ai-search-plugin.ts
 - [x] AnimationEngine
 - [x] AnimationPresets
 - [x] FlipAnimation
+- [x] PluginManager
 - [ ] CacheManager
 
 目录：
