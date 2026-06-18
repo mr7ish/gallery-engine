@@ -884,6 +884,42 @@ gallery.use(
 - `position` 支持九宫格位置：`top-left`、`top-center`、`top-right`、`center-left`、`center`、`center-right`、`bottom-left`、`bottom-center`、`bottom-right`
 - 插件卸载或 `destroy` 生命周期会移除水印 DOM，并恢复由插件修改的容器定位样式
 
+### DownloadPlugin
+
+```ts
+import { DownloadPlugin } from '@gallery-engine/plugins'
+
+const downloadPlugin = new DownloadPlugin({
+  filenameTemplate: 'gallery-{index}-{id}.{extension}'
+})
+
+gallery.use(downloadPlugin)
+
+downloadPlugin.download('image-id')
+downloadPlugin.download({
+  id: 'cover',
+  src: '/cover.jpg',
+  title: 'Cover'
+})
+downloadPlugin.downloadMany()
+```
+
+文件名格式化：
+
+```ts
+new DownloadPlugin({
+  filenameFormatter: ({ image, index, extension }) =>
+    `${index + 1}-${image.title ?? image.id}.${extension}`
+})
+```
+
+说明：
+- `download(imageOrId)` 触发单图下载，参数可以是图片对象或 Gallery config 中的图片 id
+- `downloadMany()` / `downloadAll()` 触发批量下载；未传参数时使用 Gallery config 中的 `images`
+- `filenameTemplate` 支持 `{index}`、`{id}`、`{title}`、`{alt}`、`{category}`、`{basename}`、`{extension}`
+- `filenameFormatter` 优先级高于模板，适合完全自定义文件名
+- 文件名会过滤浏览器与文件系统不安全字符
+
 ### 卸载插件
 
 ```ts

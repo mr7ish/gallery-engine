@@ -9,6 +9,18 @@ export const PLUGINS_PACKAGE_METADATA: PackageMetadata = {
 };
 
 export {
+  DownloadPlugin,
+  type DownloadableImage,
+  type DownloadFilenameContext,
+  type DownloadFilenameFormatter,
+  type DownloadGalleryConfig,
+  type DownloadGalleryContext,
+  type DownloadPluginOptions,
+  type DownloadRequestOptions,
+  type DownloadResult
+} from "./download-plugin";
+
+export {
   WatermarkPlugin,
   type ImageWatermarkContent,
   type TextWatermarkContent,

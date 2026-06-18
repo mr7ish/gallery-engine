@@ -391,9 +391,9 @@ packages/plugins/src/watermark-plugin.ts
 
 ### Feature 9.3 DownloadPlugin
 
-- [ ] 单图下载
-- [ ] 批量下载
-- [ ] 文件名格式化
+- [x] 单图下载
+- [x] 批量下载
+- [x] 文件名格式化
 
 文件：
 
