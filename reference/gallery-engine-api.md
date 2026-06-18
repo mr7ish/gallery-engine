@@ -644,6 +644,28 @@ const result = grid.calculate(images, {
 - 未设置 `columns` 且设置 `minColumnWidth` 时，会根据容器宽度计算响应式列数
 - 图片存在 `width` 与 `height` 时按比例计算高度，否则使用方形占位
 
+### MasonryLayout
+
+```ts
+import { MasonryLayout } from '@gallery-engine/layouts'
+
+const masonry = new MasonryLayout({
+  minColumnWidth: 240,
+  gap: 12
+})
+
+const result = masonry.calculate(images, {
+  containerWidth: 960
+})
+```
+
+说明：
+
+- 每个图片会放入当前最短列
+- `columns` 可指定固定列数
+- 未设置 `columns` 时通过 `minColumnWidth` 计算响应式列数
+- 图片存在 `width` 与 `height` 时按比例计算高度，否则使用方形占位
+
 ---
 
 ## Event API

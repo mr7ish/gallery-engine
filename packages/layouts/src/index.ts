@@ -10,6 +10,9 @@ export { LayoutRegistry } from "./types";
 export type { GridLayoutOptions } from "./grid-layout";
 export { GridLayout } from "./grid-layout";
 
+export type { MasonryLayoutOptions } from "./masonry-layout";
+export { MasonryLayout } from "./masonry-layout";
+
 export interface PackageMetadata {
   readonly name: string;
   readonly layer: "core" | "engine" | "plugin" | "shared";

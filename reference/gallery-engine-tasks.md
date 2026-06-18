@@ -163,9 +163,9 @@ packages/layouts/src/grid-layout.ts
 
 ### Feature 4.3 MasonryLayout
 
-- [ ] 动态列高度
-- [ ] 最小列宽
-- [ ] 响应式布局
+- [x] 动态列高度
+- [x] 最小列宽
+- [x] 响应式布局
 
 文件：
 
