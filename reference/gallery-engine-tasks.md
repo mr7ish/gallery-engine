@@ -222,9 +222,9 @@ packages/core/src/lazy-observer.ts
 
 ### Feature 5.3 Infinite Scroll
 
-- [ ] batchSize 配置
-- [ ] 触底检测
-- [ ] 自动加载更多
+- [x] batchSize 配置
+- [x] 触底检测
+- [x] 自动加载更多
 
 文件：
 

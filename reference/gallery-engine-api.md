@@ -479,6 +479,35 @@ lazyObserver.observe(imageElement, {
 - 默认 `once: true`，元素首次进入视口后自动取消观察
 - `disconnect()` 会清空所有观察目标
 
+### InfiniteScroll
+
+```ts
+import { InfiniteScroll } from '@gallery-engine/core'
+
+const infiniteScroll = new InfiniteScroll({
+  items,
+  batchSize: 20,
+  threshold: 200,
+  onLoadMore: state => {
+    state.visibleItems
+  }
+})
+
+const state = infiniteScroll.handleScroll({
+  scrollTop: container.scrollTop,
+  clientHeight: container.clientHeight,
+  scrollHeight: container.scrollHeight
+})
+```
+
+说明：
+
+- `batchSize` 控制每次新增可见数据量
+- `threshold` 表示距离底部多少像素内触发加载
+- `loadMore()` 可手动加载下一批
+- `updateItems()` 可替换全集数据并保持加载范围合理
+- `reset()` 会重置为首批数据
+
 ---
 
 ## 搜索方法
