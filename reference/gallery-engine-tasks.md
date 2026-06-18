@@ -270,10 +270,10 @@ packages/core/src/scroll-manager.ts
 
 ### Feature 7.1 PreviewEngine
 
-- [ ] open/close
-- [ ] next/prev
-- [ ] 键盘控制
-- [ ] 状态管理
+- [x] open/close
+- [x] next/prev
+- [x] 键盘控制
+- [x] 状态管理
 
 文件：
 

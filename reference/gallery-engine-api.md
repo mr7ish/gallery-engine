@@ -366,44 +366,62 @@ gallery.replace(images)
 ### open
 
 ```ts
-gallery.open(index)
+import { PreviewEngine } from '@gallery-engine/preview'
+
+const preview = new PreviewEngine({
+  items,
+  keyboard: true,
+  onChange: state => {
+    state.current
+  }
+})
+
+preview.open(index)
 ```
 
 ### close
 
 ```ts
-gallery.close()
+preview.close()
 ```
 
 ### next
 
 ```ts
-gallery.next()
+preview.next()
 ```
 
 ### prev
 
 ```ts
-gallery.prev()
+preview.prev()
 ```
 
 ### zoomIn
 
 ```ts
-gallery.zoomIn()
+preview.zoomIn()
 ```
 
 ### zoomOut
 
 ```ts
-gallery.zoomOut()
+preview.zoomOut()
 ```
 
 ### resetZoom
 
 ```ts
-gallery.resetZoom()
+preview.resetZoom()
 ```
+
+说明：
+
+- `PreviewEngine` 管理 `visible`、`current`、`zoom` 与当前预览项
+- 打开预览时会夹紧索引并重置缩放
+- `next()` / `prev()` 支持首尾循环
+- 键盘开启时支持 `ArrowLeft`、`ArrowRight`、`Space`、`Home`、`End`、`Escape`
+- `destroy()` 会解除键盘监听
 
 ---
 

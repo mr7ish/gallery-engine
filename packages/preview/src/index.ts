@@ -1,3 +1,6 @@
+export type { PreviewEngineOptions, PreviewItem, PreviewState } from "./preview-engine";
+export { PreviewEngine } from "./preview-engine";
+
 export interface PackageMetadata {
   readonly name: string;
   readonly layer: "core" | "engine" | "plugin" | "shared";
