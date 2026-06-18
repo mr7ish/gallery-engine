@@ -34,6 +34,15 @@ export type { RenderedNode, RendererOptions, RenderItem } from "./renderer";
 export { Renderer } from "./renderer";
 
 export type {
+  ScrollManagerOptions,
+  ScrollPosition,
+  ScrollState,
+  ScrollStateHandler,
+  ScrollTarget
+} from "./scroll-manager";
+export { ScrollManager } from "./scroll-manager";
+
+export type {
   VirtualEngineOptions,
   VirtualItem,
   VirtualRange,

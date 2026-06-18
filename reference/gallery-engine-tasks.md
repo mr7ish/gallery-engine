@@ -253,10 +253,10 @@ packages/core/src/virtual-engine.ts
 
 ### Feature 6.2 ScrollManager
 
-- [ ] 滚动监听
-- [ ] requestAnimationFrame 节流
-- [ ] 滚动结束检测
-- [ ] 位置缓存
+- [x] 滚动监听
+- [x] requestAnimationFrame 节流
+- [x] 滚动结束检测
+- [x] 位置缓存
 
 文件：
 
@@ -440,6 +440,7 @@ packages/plugins/src/ai-search-plugin.ts
 - [x] EventBus
 - [x] Layouts
 - [x] VirtualEngine
+- [x] ScrollManager
 - [ ] CacheManager
 
 目录：

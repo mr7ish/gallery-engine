@@ -565,6 +565,39 @@ const state = infiniteScroll.handleScroll({
 - `updateItems()` 可替换全集数据并保持加载范围合理
 - `reset()` 会重置为首批数据
 
+### ScrollManager
+
+```ts
+import { ScrollManager } from '@gallery-engine/core'
+
+const scrollManager = new ScrollManager({
+  target: document.querySelector('#gallery')!,
+  endDelay: 120,
+  onScrollStart: state => {
+    state.isScrolling
+  },
+  onScroll: state => {
+    state.scrollTop
+  },
+  onScrollEnd: state => {
+    state.isScrolling
+  }
+})
+
+scrollManager.start()
+scrollManager.savePosition('gallery')
+scrollManager.restorePosition('gallery')
+```
+
+说明：
+
+- `ScrollManager` 封装滚动监听，支持 `HTMLElement`、`Document` 与 `Window`
+- `onScroll` 通过 `requestAnimationFrame` 节流，每帧最多触发一次
+- `endDelay` 控制滚动停止后触发 `onScrollEnd` 的延迟时间
+- `savePosition()`、`restorePosition()`、`getCachedPosition()` 与 `clearPosition()` 管理滚动位置缓存
+- `stop()` 会移除监听并取消待执行的帧回调与结束检测
+- `destroy()` 会停止监听并清空位置缓存
+
 ---
 
 ## 搜索方法
