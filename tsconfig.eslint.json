@@ -23,6 +23,7 @@
     "prettier.config.cjs",
     "vitest.config.ts",
     "vitest.benchmark.config.ts",
+    "scripts/**/*.mjs",
     "packages/**/*.ts",
     "tests/**/*.ts"
   ],

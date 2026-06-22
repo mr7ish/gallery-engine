@@ -53,6 +53,7 @@ pnpm typecheck
 pnpm test
 pnpm test:e2e
 pnpm benchmark
+pnpm docs:api
 pnpm lint
 pnpm format
 ```
@@ -482,6 +483,20 @@ MAJOR.MINOR.PATCH
 - Config
 - API
 - Example
+
+API 文档目录：
+
+```text
+docs/api
+```
+
+API 类型文档生成命令：
+
+```text
+pnpm docs:api
+```
+
+`docs/api/generated` 由脚本从各 package 的 `src/index.ts` 命名导出生成，公共 API 变更后必须重新生成。
 
 文档优先级：
 

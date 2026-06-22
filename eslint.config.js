@@ -37,6 +37,12 @@ export default tseslint.config(
     }
   },
   {
+    files: ["scripts/**/*.mjs"],
+    rules: {
+      "@typescript-eslint/explicit-function-return-type": "off"
+    }
+  },
+  {
     files: [
       "eslint.config.js",
       "playwright.config.ts",

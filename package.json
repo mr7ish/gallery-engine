@@ -9,6 +9,7 @@
     "typecheck": "pnpm -r --filter @gallery-engine/* typecheck && tsc -p tsconfig.eslint.json --noEmit",
     "test": "vitest run",
     "benchmark": "vitest run -c vitest.benchmark.config.ts",
+    "docs:api": "node scripts/generate-api-docs.mjs",
     "test:e2e": "playwright test",
     "lint": "eslint .",
     "format": "prettier --check .",
