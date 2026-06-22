@@ -824,6 +824,33 @@ gallery.clearCache()
 gallery.getCacheSize()
 ```
 
+### CacheManager
+
+```ts
+import { CacheManager, createImageCache } from '@gallery-engine/shared'
+
+const cache = new CacheManager<string, string>({
+  maxEntries: 100,
+  ttl: 60_000,
+  estimateSize: value => value.length
+})
+
+cache.set('hero', '/hero.jpg')
+cache.get('hero')
+cache.getStats()
+cache.pruneExpired()
+
+const imageCache = createImageCache({
+  maxEntries: 50
+})
+```
+
+说明：
+- `CacheManager` 提供通用内存缓存，支持 `set()`、`get()`、`has()`、`delete()`、`clear()`
+- `maxEntries` 启用 LRU 淘汰，超出容量时移除最久未使用项
+- `ttl` 启用过期时间，读取、统计和快照会清理过期项
+- `getStats()` 返回条目数量、估算内存大小、容量和 TTL 策略
+- `createImageCache()` 使用图片尺寸或 bytes 估算缓存大小
 ---
 
 ## 插件系统

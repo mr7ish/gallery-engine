@@ -118,10 +118,10 @@ packages/core/src/image-loader.ts
 
 ### Feature 3.2 CacheManager
 
-- [ ] ImageCache
-- [ ] LRU 策略
-- [ ] TTL 策略
-- [ ] 内存统计
+- [x] ImageCache
+- [x] LRU 策略
+- [x] TTL 策略
+- [x] 内存统计
 
 文件：
 
@@ -447,7 +447,7 @@ packages/plugins/src/ai-search-plugin.ts
 - [x] AnimationPresets
 - [x] FlipAnimation
 - [x] PluginManager
-- [ ] CacheManager
+- [x] CacheManager
 
 目录：
 
