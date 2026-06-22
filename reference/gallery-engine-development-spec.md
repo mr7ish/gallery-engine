@@ -52,6 +52,7 @@ pnpm build
 pnpm typecheck
 pnpm test
 pnpm test:e2e
+pnpm benchmark
 pnpm lint
 pnpm format
 ```
@@ -391,11 +392,21 @@ tests/e2e
 tests/benchmark
 ```
 
+命令：
+
+```text
+pnpm benchmark
+```
+
+Benchmark 使用独立 Vitest 配置 `vitest.benchmark.config.ts`，避免普通单元测试默认执行重负载性能用例。
+
 测试场景：
 
 - 1000 图片：FPS、Memory、Render Time
 - 5000 图片：Scroll Performance
 - 10000 图片：Virtual Render Cost
+- FPS 统计：基于平均帧成本估算，最低目标 55 FPS
+- Memory 统计：记录 benchmark 执行期间的 heap 增量
 
 ---
 

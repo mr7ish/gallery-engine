@@ -8,6 +8,7 @@
     "build": "pnpm -r --filter @gallery-engine/* build",
     "typecheck": "pnpm -r --filter @gallery-engine/* typecheck && tsc -p tsconfig.eslint.json --noEmit",
     "test": "vitest run",
+    "benchmark": "vitest run -c vitest.benchmark.config.ts",
     "test:e2e": "playwright test",
     "lint": "eslint .",
     "format": "prettier --check .",

@@ -37,7 +37,13 @@ export default tseslint.config(
     }
   },
   {
-    files: ["eslint.config.js", "playwright.config.ts", "vitest.config.ts", "**/vite.config.ts"],
+    files: [
+      "eslint.config.js",
+      "playwright.config.ts",
+      "vitest.config.ts",
+      "vitest.benchmark.config.ts",
+      "**/vite.config.ts"
+    ],
     rules: {
       "@typescript-eslint/no-deprecated": "off",
       "import/no-default-export": "off"
