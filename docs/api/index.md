@@ -13,7 +13,7 @@ pnpm docs:api
 Generated pages live in [generated](./generated/index.md):
 
 - [Core](./generated/core.md): Gallery, EventBus, ConfigManager, Renderer, VirtualEngine, ScrollManager, LazyObserver, InfiniteScroll, PluginManager, and shared core types.
-- [Layouts](./generated/layouts.md): layout contracts, registry, GridLayout, and MasonryLayout.
+- [Layouts](./generated/layouts.md): layout contracts, registry, GridLayout, MasonryLayout, and JustifiedLayout.
 - [Animations](./generated/animations.md): AnimationEngine, built-in presets, and FlipAnimation.
 - [Preview](./generated/preview.md): PreviewEngine, ZoomManager, and FullscreenManager.
 - [Plugins](./generated/plugins.md): watermark, download, AI tags, and AI search plugins.

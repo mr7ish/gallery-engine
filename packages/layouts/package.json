@@ -1,10 +1,13 @@
 {
   "name": "@gallery-engine/layouts",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "type": "module",
   "private": false,
   "files": [
-    "dist"
+    "dist/**/*.js",
+    "dist/**/*.js.map",
+    "dist/**/*.d.ts",
+    "dist/**/*.d.ts.map"
   ],
   "main": "./dist/index.js",
   "module": "./dist/index.js",
@@ -22,5 +25,8 @@
   "devDependencies": {
     "typescript": "^5.7.2",
     "vite": "^6.0.7"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
