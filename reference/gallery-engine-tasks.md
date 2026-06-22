@@ -407,9 +407,9 @@ packages/plugins/src/download-plugin.ts
 
 ### Feature 10.1 Auto Tagging
 
-- [ ] 图片标签生成接口
-- [ ] 标签缓存
-- [ ] UI 集成
+- [x] 图片标签生成接口
+- [x] 标签缓存
+- [x] UI 集成
 
 文件：
 

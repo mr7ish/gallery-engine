@@ -920,6 +920,41 @@ new DownloadPlugin({
 - `filenameFormatter` 优先级高于模板，适合完全自定义文件名
 - 文件名会过滤浏览器与文件系统不安全字符
 
+### AiTagsPlugin
+
+```ts
+import { AiTagsPlugin } from '@gallery-engine/plugins'
+
+const aiTagsPlugin = new AiTagsPlugin({
+  provider: {
+    generateTags: async ({ image }) => ['landscape', image.category ?? 'gallery']
+  },
+  container: '#gallery-tags'
+})
+
+gallery.use(aiTagsPlugin)
+
+const result = await aiTagsPlugin.tagImage('image-id')
+const results = await aiTagsPlugin.tagMany()
+```
+
+缓存与 UI：
+
+```ts
+await aiTagsPlugin.tagImage('image-id')
+aiTagsPlugin.getCachedTags('image-id')
+aiTagsPlugin.clearCache('image-id')
+aiTagsPlugin.renderCachedTags()
+```
+
+说明：
+- `AiTagsPlugin` 通过外部 `provider.generateTags()` 生成标签，不绑定具体 AI SDK 或网络服务
+- `tagImage(imageOrId)` 支持单图标签生成，参数可以是图片对象或 Gallery config 中的图片 id
+- `tagMany()` 支持批量标签生成；未传参数时使用 Gallery config 中的 `images`
+- 默认用 `image.id` 缓存标签结果，可通过 `cacheKey` 自定义缓存键
+- `force: true` 会绕过缓存重新生成标签
+- 配置 `container` 或使用 Gallery config container 时可渲染标签 UI；`renderTags: false` 或调用时 `render: false` 可关闭 UI
+
 ### 卸载插件
 
 ```ts

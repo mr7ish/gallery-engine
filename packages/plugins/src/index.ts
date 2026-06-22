@@ -9,6 +9,19 @@ export const PLUGINS_PACKAGE_METADATA: PackageMetadata = {
 };
 
 export {
+  AiTagsPlugin,
+  type AiTagCacheKeyResolver,
+  type AiTagProvider,
+  type AiTagRequest,
+  type AiTagResult,
+  type AiTaggableImage,
+  type AiTagsGalleryConfig,
+  type AiTagsGalleryContext,
+  type AiTagsPluginOptions,
+  type AiTagsRequestOptions
+} from "./ai-tags-plugin";
+
+export {
   DownloadPlugin,
   type DownloadableImage,
   type DownloadFilenameContext,
