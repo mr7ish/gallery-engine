@@ -461,8 +461,8 @@ tests/unit
 
 - [x] Lazy Load
 - [x] Infinite Scroll
-- [ ] Preview
-- [ ] Virtual Scroll
+- [x] Preview
+- [x] Virtual Scroll
 
 目录：
 
