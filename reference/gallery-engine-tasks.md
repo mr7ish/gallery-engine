@@ -421,9 +421,9 @@ packages/plugins/src/ai-tags-plugin.ts
 
 ### Feature 10.2 Similar Search
 
-- [ ] 特征提取接口
-- [ ] 相似度计算
-- [ ] 搜索 API
+- [x] 特征提取接口
+- [x] 相似度计算
+- [x] 搜索 API
 
 文件：
 

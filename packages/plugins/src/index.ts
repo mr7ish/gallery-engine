@@ -22,6 +22,24 @@ export {
 } from "./ai-tags-plugin";
 
 export {
+  AiSearchPlugin,
+  calculateSimilarity,
+  type AiFeatureProvider,
+  type AiFeatureRequest,
+  type AiFeatureResult,
+  type AiSearchCacheKeyResolver,
+  type AiSearchGalleryConfig,
+  type AiSearchGalleryContext,
+  type AiSearchPluginOptions,
+  type AiSearchQuery,
+  type AiSearchRequestOptions,
+  type AiSearchResult,
+  type AiSearchSimilarityMetric,
+  type AiSearchVectorQuery,
+  type AiSearchableImage
+} from "./ai-search-plugin";
+
+export {
   DownloadPlugin,
   type DownloadableImage,
   type DownloadFilenameContext,

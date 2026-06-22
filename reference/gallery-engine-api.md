@@ -955,6 +955,40 @@ aiTagsPlugin.renderCachedTags()
 - `force: true` 会绕过缓存重新生成标签
 - 配置 `container` 或使用 Gallery config container 时可渲染标签 UI；`renderTags: false` 或调用时 `render: false` 可关闭 UI
 
+### AiSearchPlugin
+
+```ts
+import { AiSearchPlugin } from '@gallery-engine/plugins'
+
+const aiSearchPlugin = new AiSearchPlugin({
+  provider: {
+    extractFeatures: async ({ image }) => [image.src.length, image.id.length]
+  }
+})
+
+gallery.use(aiSearchPlugin)
+
+const results = await aiSearchPlugin.searchByImage('image-id')
+const vectorResults = await aiSearchPlugin.searchByVector([0.12, 0.88])
+```
+
+相似度与缓存：
+
+```ts
+await aiSearchPlugin.extractFeatures('image-id')
+aiSearchPlugin.getCachedFeatures('image-id')
+aiSearchPlugin.clearCache('image-id')
+aiSearchPlugin.calculateSimilarity([1, 0], [0.9, 0.1])
+```
+
+说明：
+- `AiSearchPlugin` 通过外部 `provider.extractFeatures()` 提取特征，不绑定具体 AI SDK 或模型
+- `extractFeatures(imageOrId)` 支持单图特征提取，参数可以是图片对象或 Gallery config 中的图片 id
+- `extractMany()` 支持批量特征提取；未传参数时使用 Gallery config 中的 `images`
+- `searchByImage()` / `searchByVector()` 返回按相似度降序排列的搜索结果
+- 默认相似度为 `cosine`，也支持 `dot` 与 `euclidean`
+- `limit`、`minScore`、`includeQuery` 与 `force` 可控制搜索结果和缓存行为
+
 ### 卸载插件
 
 ```ts
