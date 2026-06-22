@@ -459,7 +459,7 @@ tests/unit
 
 ### Feature 11.2 E2E Tests
 
-- [ ] Lazy Load
+- [x] Lazy Load
 - [ ] Infinite Scroll
 - [ ] Preview
 - [ ] Virtual Scroll
