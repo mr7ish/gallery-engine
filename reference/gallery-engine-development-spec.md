@@ -498,6 +498,17 @@ pnpm docs:api
 
 `docs/api/generated` 由脚本从各 package 的 `src/index.ts` 命名导出生成，公共 API 变更后必须重新生成。
 
+示例项目目录：
+
+```text
+examples/vanilla
+examples/react
+examples/vue
+examples/large-data
+```
+
+示例项目使用独立 `package.json` 声明运行时依赖，根仓库不直接引入 React 或 Vue。示例源码必须使用 Gallery Engine 命名导出，不允许 `export default`。
+
 文档优先级：
 
 ```text

@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gallery Engine Vanilla Example</title>
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="toolbar">
+        <div>
+          <p class="eyebrow">Vanilla</p>
+          <h1>Gallery Engine</h1>
+        </div>
+        <button id="refresh" type="button">Refresh Layout</button>
+      </header>
+      <section id="gallery" class="gallery-shell" aria-label="Image gallery"></section>
+      <section id="preview" class="preview-shell" hidden>
+        <button id="preview-close" type="button" aria-label="Close preview">Close</button>
+        <button id="preview-prev" type="button" aria-label="Previous image">Previous</button>
+        <figure>
+          <img id="preview-image" alt="" />
+          <figcaption id="preview-title"></figcaption>
+        </figure>
+        <button id="preview-next" type="button" aria-label="Next image">Next</button>
+      </section>
+    </main>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

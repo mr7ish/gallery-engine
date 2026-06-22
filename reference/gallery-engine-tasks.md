@@ -506,10 +506,10 @@ docs/api
 
 ### Feature 12.2 示例项目
 
-- [ ] Vanilla JS 示例
-- [ ] React 示例
-- [ ] Vue 示例
-- [ ] 大数据量示例
+- [x] Vanilla JS 示例
+- [x] React 示例
+- [x] Vue 示例
+- [x] 大数据量示例
 
 目录：
 
