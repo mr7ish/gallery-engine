@@ -31,6 +31,16 @@ export type { LazyObserverEntry, LazyObserverHandler, LazyObserverOptions } from
 export { LazyObserver } from "./lazy-observer";
 
 export type {
+  ImageLoaderOptions,
+  ImageLoadRequest,
+  ImageLoadResult,
+  ImageLoadState,
+  ImageLoadStateHandler,
+  ImageLoadStatus
+} from "./image-loader";
+export { ImageLoader } from "./image-loader";
+
+export type {
   ManagedPlugin,
   PluginLifecycleEvent,
   PluginLifecycleHandler,

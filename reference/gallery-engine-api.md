@@ -724,6 +724,37 @@ lazyObserver.observe(imageElement, {
 - 默认 `once: true`，元素首次进入视口后自动取消观察
 - `disconnect()` 会清空所有观察目标
 
+### ImageLoader
+
+```ts
+import { ImageLoader } from '@gallery-engine/core'
+
+const imageLoader = new ImageLoader({
+  maxConcurrent: 4,
+  retries: 2,
+  retryDelay: 100,
+  decode: true,
+  onStateChange: state => {
+    state.status
+  }
+})
+
+const result = await imageLoader.load({
+  id: 'hero',
+  src: '/hero.jpg',
+  alt: 'Hero image'
+})
+
+await imageLoader.loadMany(images)
+result.element
+```
+
+说明：
+
+- `ImageLoader` 负责图片请求、`HTMLImageElement.decode()`、加载状态快照、失败重试与并发控制
+- `maxConcurrent` 最小为 1，`retries` 最小为 0，`retryDelay` 使用毫秒
+- `loadMany()` 保持输入顺序返回结果
+- `getState()`、`getStates()` 可读取当前加载状态，`clear()` 会清空排队任务与状态快照
 ### InfiniteScroll
 
 ```ts

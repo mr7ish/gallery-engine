@@ -102,11 +102,11 @@ packages/core/src/gallery.ts
 
 ### Feature 3.1 ImageLoader
 
-- [ ] 图片请求
-- [ ] decode 支持
-- [ ] 加载状态机
-- [ ] 失败重试
-- [ ] 并发控制
+- [x] 图片请求
+- [x] decode 支持
+- [x] 加载状态机
+- [x] 失败重试
+- [x] 并发控制
 
 文件：
 
