@@ -1166,6 +1166,28 @@ const result = masonry.calculate(images, {
 - 未设置 `columns` 时通过 `minColumnWidth` 计算响应式列数
 - 图片存在 `width` 与 `height` 时按比例计算高度，否则使用方形占位
 
+### JustifiedLayout
+
+```ts
+import { JustifiedLayout } from '@gallery-engine/layouts'
+
+const justified = new JustifiedLayout({
+  rowHeight: 220,
+  gap: 12
+})
+
+const result = justified.calculate(images, {
+  containerWidth: 960
+})
+```
+
+说明：
+
+- `rowHeight` 是目标行高，完整行会基于图片宽高比重新计算行高以填满容器
+- 图片存在 `width` 与 `height` 时按比例计算宽度，否则使用方形比例
+- `gap` 同时作用于行内间距与行间距
+- 最后一行未填满容器时保持目标行高，不强制拉伸
+
 ---
 
 ## Event API

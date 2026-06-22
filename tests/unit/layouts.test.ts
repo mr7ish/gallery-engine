@@ -1,4 +1,9 @@
-import { GridLayout, LayoutRegistry, MasonryLayout } from "@gallery-engine/layouts";
+import {
+  GridLayout,
+  JustifiedLayout,
+  LayoutRegistry,
+  MasonryLayout
+} from "@gallery-engine/layouts";
 import type { Layout, LayoutInputItem } from "@gallery-engine/layouts";
 import { describe, expect, it } from "vitest";
 
@@ -281,6 +286,158 @@ describe("MasonryLayout", () => {
   it("returns an empty layout for empty input", () => {
     const layout = new MasonryLayout({
       columns: 3,
+      gap: 12
+    });
+
+    const result = layout.calculate([], {
+      containerWidth: 360
+    });
+
+    expect(result).toEqual({
+      width: 360,
+      height: 0,
+      items: []
+    });
+  });
+});
+
+describe("JustifiedLayout", () => {
+  it("calculates row height so completed rows fill the container", () => {
+    const layout = new JustifiedLayout({
+      rowHeight: 100,
+      gap: 10
+    });
+
+    const result = layout.calculate(
+      [
+        {
+          id: "square-left",
+          width: 100,
+          height: 100
+        },
+        {
+          id: "wide",
+          width: 200,
+          height: 100
+        },
+        {
+          id: "square-right",
+          width: 100,
+          height: 100
+        }
+      ],
+      {
+        containerWidth: 420
+      }
+    );
+
+    expect(result.items).toEqual([
+      {
+        id: "square-left",
+        x: 0,
+        y: 0,
+        width: 100,
+        height: 100
+      },
+      {
+        id: "wide",
+        x: 110,
+        y: 0,
+        width: 200,
+        height: 100
+      },
+      {
+        id: "square-right",
+        x: 320,
+        y: 0,
+        width: 100,
+        height: 100
+      }
+    ]);
+    expect(result.height).toBe(100);
+  });
+
+  it("preserves item ratios when a row is justified", () => {
+    const layout = new JustifiedLayout({
+      rowHeight: 100,
+      gap: 0
+    });
+
+    const result = layout.calculate(
+      [
+        {
+          id: "wide",
+          width: 300,
+          height: 100
+        }
+      ],
+      {
+        containerWidth: 240
+      }
+    );
+
+    expect(result.items[0]?.width).toBe(240);
+    expect(result.items[0]?.height).toBe(80);
+  });
+
+  it("keeps the final incomplete row at the target row height", () => {
+    const layout = new JustifiedLayout({
+      rowHeight: 100,
+      gap: 10
+    });
+
+    const result = layout.calculate(
+      [
+        {
+          id: "first",
+          width: 100,
+          height: 100
+        },
+        {
+          id: "second",
+          width: 100,
+          height: 100
+        }
+      ],
+      {
+        containerWidth: 300
+      }
+    );
+
+    expect(result.items.map((item) => item.x)).toEqual([0, 110]);
+    expect(result.items.map((item) => item.width)).toEqual([100, 100]);
+    expect(result.height).toBe(100);
+  });
+
+  it("uses square ratios when source dimensions are missing", () => {
+    const layout = new JustifiedLayout({
+      rowHeight: 80,
+      gap: 8
+    });
+
+    const result = layout.calculate(
+      [
+        {
+          id: "unknown-size"
+        }
+      ],
+      {
+        containerWidth: 80
+      }
+    );
+
+    expect(result.items[0]).toEqual({
+      id: "unknown-size",
+      x: 0,
+      y: 0,
+      width: 80,
+      height: 80
+    });
+  });
+
+  it("returns an empty layout for empty input", () => {
+    const layout = new JustifiedLayout({
+      rowHeight: 120,
       gap: 12
     });
 

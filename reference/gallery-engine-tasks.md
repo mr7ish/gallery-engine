@@ -177,9 +177,9 @@ packages/layouts/src/masonry-layout.ts
 
 ### Feature 4.4 JustifiedLayout
 
-- [ ] 行高计算
-- [ ] 比例裁剪
-- [ ] gap 支持
+- [x] 行高计算
+- [x] 比例裁剪
+- [x] gap 支持
 
 文件：
 
