@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 0.1.1 - 2026-06-25
 
 - Added `@gallery-engine/suite` as an all-in-one package that re-exports the stable named APIs from `core`, `layouts`, `animations`, `preview`, `plugins`, and `shared`.
 - Updated the publish helper to include `suite` last and skip already-published package versions by default.
