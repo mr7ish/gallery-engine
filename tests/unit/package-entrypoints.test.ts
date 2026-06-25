@@ -4,6 +4,7 @@ import * as layouts from "@gallery-engine/layouts";
 import * as plugins from "@gallery-engine/plugins";
 import * as preview from "@gallery-engine/preview";
 import * as shared from "@gallery-engine/shared";
+import * as suite from "@gallery-engine/suite";
 import { describe, expect, it } from "vitest";
 
 const packageModules = [
@@ -36,6 +37,11 @@ const packageModules = [
     metadata: shared.SHARED_PACKAGE_METADATA,
     module: shared,
     name: "@gallery-engine/shared"
+  },
+  {
+    metadata: suite.SUITE_PACKAGE_METADATA,
+    module: suite,
+    name: "@gallery-engine/suite"
   }
 ];
 

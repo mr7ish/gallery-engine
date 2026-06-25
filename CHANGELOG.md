@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased
+
+- Added `@gallery-engine/suite` as an all-in-one package that re-exports the stable named APIs from `core`, `layouts`, `animations`, `preview`, `plugins`, and `shared`.
+- Updated the publish helper to include `suite` last and skip already-published package versions by default.
+
 ## 0.1.0 - 2026-06-22
 
 首次可发布版本，包含 Gallery Engine 的核心 monorepo 包：

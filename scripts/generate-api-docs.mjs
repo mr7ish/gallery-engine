@@ -61,6 +61,11 @@ const packages = [
     name: "@gallery-engine/shared",
     slug: "shared",
     entry: "packages/shared/src/index.ts"
+  },
+  {
+    name: "@gallery-engine/suite",
+    slug: "suite",
+    entry: "packages/suite/src/index.ts"
   }
 ];
 

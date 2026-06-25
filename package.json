@@ -34,6 +34,7 @@
     "@gallery-engine/plugins": "workspace:*",
     "@gallery-engine/preview": "workspace:*",
     "@gallery-engine/shared": "workspace:*",
+    "@gallery-engine/suite": "workspace:*",
     "@playwright/test": "^1.49.1",
     "@types/node": "^22.10.5",
     "eslint": "^9.17.0",

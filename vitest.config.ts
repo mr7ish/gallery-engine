@@ -12,7 +12,8 @@ export default defineConfig({
       "@gallery-engine/layouts": resolveWorkspacePackage("./packages/layouts/src/index.ts"),
       "@gallery-engine/plugins": resolveWorkspacePackage("./packages/plugins/src/index.ts"),
       "@gallery-engine/preview": resolveWorkspacePackage("./packages/preview/src/index.ts"),
-      "@gallery-engine/shared": resolveWorkspacePackage("./packages/shared/src/index.ts")
+      "@gallery-engine/shared": resolveWorkspacePackage("./packages/shared/src/index.ts"),
+      "@gallery-engine/suite": resolveWorkspacePackage("./packages/suite/src/index.ts")
     }
   },
   test: {

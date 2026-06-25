@@ -18,19 +18,23 @@ Generated pages live in [generated](./generated/index.md):
 - [Preview](./generated/preview.md): PreviewEngine, ZoomManager, and FullscreenManager.
 - [Plugins](./generated/plugins.md): watermark, download, AI tags, and AI search plugins.
 - [Shared](./generated/shared.md): CacheManager and image cache helpers.
+- [Suite](./generated/suite.md): all-in-one entrypoint that re-exports the stable APIs from every package.
 
 ## Stable Import Pattern
 
 ```ts
-import { Gallery, VirtualEngine } from "@gallery-engine/core";
-import type { GalleryImage, UserGalleryConfig } from "@gallery-engine/core";
-import { GridLayout } from "@gallery-engine/layouts";
+import { Gallery, GridLayout, PreviewEngine } from "@gallery-engine/suite";
+import type { GalleryImage, UserGalleryConfig } from "@gallery-engine/suite";
+
+// Advanced installs can still import individual packages.
+import { VirtualEngine } from "@gallery-engine/core";
 ```
 
 Use named imports only. Public type imports should use `import type` when the symbol is erased at runtime.
 
 ## API Layers
 
+- `@gallery-engine/suite` is the all-in-one package for application code that wants the stable exports from every package.
 - `@gallery-engine/core` owns orchestration, configuration, events, rendering, scrolling, virtualization, and plugin lifecycle coordination.
 - `@gallery-engine/layouts` owns layout calculation and registration.
 - `@gallery-engine/animations` owns GSAP-compatible animation adapters and presets.

@@ -29,6 +29,9 @@ importers:
       '@gallery-engine/shared':
         specifier: workspace:*
         version: link:packages/shared
+      '@gallery-engine/suite':
+        specifier: workspace:*
+        version: link:packages/suite
       '@playwright/test':
         specifier: ^1.49.1
         version: 1.60.0
@@ -200,6 +203,34 @@ importers:
         version: 6.4.3(@types/node@22.19.21)(yaml@2.9.0)
 
   packages/shared:
+    devDependencies:
+      typescript:
+        specifier: ^5.7.2
+        version: 5.9.3
+      vite:
+        specifier: ^6.0.7
+        version: 6.4.3(@types/node@22.19.21)(yaml@2.9.0)
+
+  packages/suite:
+    dependencies:
+      '@gallery-engine/animations':
+        specifier: workspace:*
+        version: link:../animations
+      '@gallery-engine/core':
+        specifier: workspace:*
+        version: link:../core
+      '@gallery-engine/layouts':
+        specifier: workspace:*
+        version: link:../layouts
+      '@gallery-engine/plugins':
+        specifier: workspace:*
+        version: link:../plugins
+      '@gallery-engine/preview':
+        specifier: workspace:*
+        version: link:../preview
+      '@gallery-engine/shared':
+        specifier: workspace:*
+        version: link:../shared
     devDependencies:
       typescript:
         specifier: ^5.7.2

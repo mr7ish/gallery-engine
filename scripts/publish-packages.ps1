@@ -4,6 +4,7 @@ param(
   [string]$Otp,
   [switch]$PromptOtp,
   [switch]$PromptOtpPerPackage,
+  [switch]$ForceExisting,
   [string]$Tag = "latest"
 )
 
@@ -15,7 +16,8 @@ $packageOrder = @(
   "layouts",
   "animations",
   "preview",
-  "plugins"
+  "plugins",
+  "suite"
 )
 
 $rootDir = Resolve-Path (Join-Path $PSScriptRoot "..")
@@ -48,6 +50,31 @@ function Read-PackageManifest {
   Get-Content -Raw -Path $manifestPath | ConvertFrom-Json
 }
 
+function Test-PublishedPackageVersion {
+  param(
+    [Parameter(Mandatory = $true)]
+    [string]$PackageName,
+    [Parameter(Mandatory = $true)]
+    [string]$Version
+  )
+
+  $previousErrorActionPreference = $ErrorActionPreference
+  $ErrorActionPreference = "Continue"
+
+  try {
+    $publishedVersion = & npm view "$PackageName@$Version" version 2>$null
+    $viewExitCode = $LASTEXITCODE
+  } finally {
+    $ErrorActionPreference = $previousErrorActionPreference
+  }
+
+  if ($viewExitCode -eq 0 -and $publishedVersion.Trim() -eq $Version) {
+    return $true
+  }
+
+  return $false
+}
+
 function Publish-Package {
   param(
     [Parameter(Mandatory = $true)]
@@ -58,6 +85,11 @@ function Publish-Package {
   $manifest = Read-PackageManifest -PackageDir $packageDir
   $displayName = "$($manifest.name)@$($manifest.version)"
   $publishArgs = @("publish", "--access", "public", "--tag", $Tag)
+
+  if (-not $ForceExisting -and (Test-PublishedPackageVersion -PackageName $manifest.name -Version $manifest.version)) {
+    Write-Host "Skipping $displayName because it already exists on npm."
+    return
+  }
 
   if ($DryRun) {
     $publishArgs += "--dry-run"

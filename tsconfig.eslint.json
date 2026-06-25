@@ -14,7 +14,8 @@
       "@gallery-engine/layouts": ["packages/layouts/src/index.ts"],
       "@gallery-engine/plugins": ["packages/plugins/src/index.ts"],
       "@gallery-engine/preview": ["packages/preview/src/index.ts"],
-      "@gallery-engine/shared": ["packages/shared/src/index.ts"]
+      "@gallery-engine/shared": ["packages/shared/src/index.ts"],
+      "@gallery-engine/suite": ["packages/suite/src/index.ts"]
     }
   },
   "include": [
