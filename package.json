@@ -14,7 +14,9 @@
     "lint": "eslint .",
     "format": "prettier --check .",
     "format:write": "prettier --write .",
-    "prepare": "husky || true"
+    "prepare": "husky || true",
+    "release:publish": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/publish-packages.ps1",
+    "release:publish:dry": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/publish-packages.ps1 -DryRun -Yes"
   },
   "lint-staged": {
     "*.{ts,tsx,js,mjs,cjs,json,md,yml,yaml}": [
